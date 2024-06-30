@@ -30,7 +30,9 @@ readProportions <- function(report_controls, contaminant_taxids = NULL) {
 totals_nonhuman_classified <- report_controls %>%
   dplyr::filter(!(name_speciesorhigher %in% unclassified_taxons)
                 & !(name_speciesorhigher %in% human_taxons)
-                & !(taxid %in% contaminant_taxids)) %>%
+                & !(taxid %in% contaminant_taxids)
+                 & !(rank %in% unclassified_taxons)
+                & !is.na(type)) %>%
   dplyr::group_by(sample_id, tool) %>%
   dplyr::summarise(total_nonhuman_classified_reads_sample = sum(reads))
 
@@ -49,7 +51,7 @@ report_final <- report_controls %>%
                                                         taxid %in% contaminant_taxids,
                                                         NA, proportion_nonhuman_classified),
                 proportion_type = ifelse(taxid %in% contaminant_taxids, NA, proportion_type)) %>%
-  dplyr::select(sample_id, dnarna, tool, name, taxid, type, rank, name_speciesorhigher, species_taxid, reads, total_raw_reads_sample, rpm,
+  dplyr::select(sample_id, dnarna, dnarna_pair, tool, name, taxid, type, rank, name_speciesorhigher, species_taxid, reads, total_raw_reads_sample, rpm,
                 corresponding_control_id, control_reads, total_raw_reads_control, control_rpm,
                 rpm_ratio, proportion_raw, proportion_nonhuman_classified, total_nonhuman_classified_reads_sample, proportion_type, total_type_reads_sample)
 

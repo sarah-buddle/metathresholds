@@ -2,9 +2,9 @@
 % Please edit documentation in R/readProportions.R
 \name{readProportions}
 \alias{readProportions}
-\title{Create species-level database}
+\title{Calculate proprtions of total, nonhuman classified and reads of that type}
 \usage{
-readProportions(report_controls, contaminant_taxids)
+readProportions(report_controls, contaminant_taxids = NULL)
 }
 \arguments{
 \item{report_controls}{output of linkControls}
@@ -15,5 +15,5 @@ readProportions(report_controls, contaminant_taxids)
 A named list containing fileds associated with the input taxon ID
 }
 \description{
-Create species-level database
+Calculate proprtions of total, nonhuman classified and reads of that type
 }

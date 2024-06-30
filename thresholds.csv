@@ -1,0 +1,17 @@
+threshold,value
+reads_bacteria,0
+reads_viruses,0
+reads_fungi,0
+reads_othereukaryotes,0
+rpm_ratio_bacteria,0
+rpm_ratio_viruses,0
+rpm_ratio_fungi,0
+rpm_ratio_othereukaryotes,0
+proportion_bacteria,0
+proportion_viruses,0
+proportion_fungi,0
+proportion_othereukaryotes,0
+low_level_bacteria,TRUE
+low_level_viruses,TRUE
+low_level_fungi,TRUE
+low_level_othereukaryotes,TRUE

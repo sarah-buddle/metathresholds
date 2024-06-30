@@ -3,11 +3,21 @@
 #'
 #'
 #' @param taxid Taxon ID
-#' @param taxonomizr_sql sql fro taxonomizr
-#' @return A named list containing fileds associated with the input taxon ID
+#' @param taxonomizr_sql Path to nameNode.sqlite file for taxonomizr.
+#' @return A named list which will become the taxonomy database entry associated with the input taxon ID.
 #' @export
 
 makeTaxDB <- function(taxid, taxonomizr_sql) {
+
+  if (!file.exists(taxonomizr_sql)) {
+
+    print("check1")
+
+    warning("No taxonomizr sqlFile found. Running prepareDatabase.")
+
+    taxonomizr::prepareDatabase(getAccessions = FALSE)
+
+  }
 
   suppressWarnings(
   rawTax <- taxonomizr::getRawTaxonomy(taxid, taxonomizr_sql)
@@ -109,9 +119,16 @@ makeTaxDB <- function(taxid, taxonomizr_sql) {
 
   # Output
 
+  # Some names have commas in, which disrupts the output
+  name <- gsub(",", ".", name)
+
+  print(name)
+
   output <- c(name, taxid, type, rank, species, species_taxid)
 
   names(output) <- c("name", "taxid", "type", "rank", "name_speciesorhigher", "species_taxid")
+
+  #print(output)
 
   return(output)
 

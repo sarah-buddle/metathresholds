@@ -16,7 +16,7 @@ collapseSpecies <- function(report_full, db) {
 
   report_collapsed <- report_full %>%
     dplyr::group_by(sample_id, tool, type, name_speciesorhigher, species_taxid,
-                    corresponding_control_id, dnarna, total_raw_reads_sample) %>%
+                    corresponding_control_id, dnarna, dnarna_pair, total_raw_reads_sample) %>%
     dplyr::summarise(reads = sum(reads)) %>%
     dplyr::ungroup() %>%
     dplyr::left_join(names_ranks)

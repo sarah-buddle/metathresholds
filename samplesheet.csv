@@ -1,0 +1,5 @@
+sample_id,corresponding_control_id,dnarna,raw_read_count_1,raw_read_count_2,kraken2_filepath
+sample1,control1,DNA,1000000,1000000,/path/to/kraken2/report
+sample2,control1,DNA,1000000,1000000,/path/to/kraken2/report
+sample3,control1,DNA,1000000,1000000,/path/to/kraken2/report
+control1,control,DNA,1000000,1000000,/path/to/kraken2/report

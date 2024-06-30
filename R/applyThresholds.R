@@ -1,14 +1,38 @@
-#' Link sample data to corresponding controls
+#' Use thresholds to decide whether a taxon is classed as positive or negative
 #'
 #'
 #'
-#' @param report_full reports linked with relevant control IDs
-#' @return A report with control read counts linke dto their relevant sample
+#' @param type
+#' @param rpm_ratio
+#' @param reads
+#' @param control_reads
+#' @param proportion
+#' @param thresholds
+#' @param reads_thres_bac
+#' @param reads_thres_vir
+#' @param reads_thres_fun
+#' @param reads_thres_euk
+#' @param rpm_ratio_thres_bac
+#' @param rpm_ratio_thres_vir
+#' @param rpm_ratio_thres_fun
+#' @param rpm_ratio_thres_euk
+#' @param proportion_thres_bas
+#' @param proportion_thres_vir
+#' @param proportion_thres_fun
+#' @param proportion_thres_euk
+#' @param low_level_bac
+#' @param low_level_vir
+#' @param low_level_fun
+#' @param low_level_euk
+#' @return Positive or negative
 #' @export
-
 
 applyThresholds <- function(type, rpm_ratio, reads, control_reads, proportion,
                             thresholds,
+                            reads_thres_bac = 0,
+                            reads_thres_vir = 0,
+                            reads_thres_fun = 0,
+                            reads_thres_euk = 0,
                             rpm_ratio_thres_bac = 0,
                             rpm_ratio_thres_vir = 0,
                             rpm_ratio_thres_fun = 0,
@@ -17,23 +41,30 @@ applyThresholds <- function(type, rpm_ratio, reads, control_reads, proportion,
                             proportion_thres_vir = 0,
                             proportion_thres_fun = 0,
                             proportion_thres_euk = 0,
-                            reads_thres_vir = 0,
-                            reads_thres_fun = 0,
-                            control_reads_thres_vir = 0) {
+                            low_level_bac = FALSE,
+                            low_level_vir = FALSE,
+                            low_level_fun = FALSE,
+                            low_level_euk = FALSE) {
+
 
   if (!is.null(thresholds)) {
 
-    rpm_ratio_thres_bac <- as.numeric(thresholds$rpm_ratio_thres_bac[[1]])
-    rpm_ratio_thres_vir <- as.numeric(thresholds$rpm_ratio_thres_vir[[1]])
-    rpm_ratio_thres_fun <- as.numeric(thresholds$rpm_ratio_thres_fun[[1]])
-    rpm_ratio_thres_euk <- as.numeric(thresholds$rpm_ratio_thres_euk[[1]])
-    proportion_thres_bac <- as.numeric(thresholds$proportion_thres_bac[[1]])
-    proportion_thres_vir <- as.numeric(thresholds$proportion_thres_vir[[1]])
-    proportion_thres_fun <- as.numeric(thresholds$proportion_thres_fun[[1]])
-    proportion_thres_euk <- as.numeric(thresholds$proportion_thres_euk[[1]])
-    reads_thres_vir <- as.numeric(thresholds$reads_thres_vir[[1]])
-    reads_thres_fun <-  as.numeric(thresholds$reads_thres_vir[[1]])
-    control_reads_thres_vir <- as.numeric(thresholds$control_reads_thres_vir[[1]])
+    reads_thres_bac <- extractThreshold(thresholds, "reads_bacteria")
+    reads_thres_vir <- extractThreshold(thresholds, "reads_viruses")
+    reads_thres_fun <- extractThreshold(thresholds, "reads_fungi")
+    reads_thres_euk <- extractThreshold(thresholds, "reads_othereukaryotes")
+    rpm_ratio_thres_bac <- extractThreshold(thresholds, "rpm_ratio_bacteria")
+    rpm_ratio_thres_vir <- extractThreshold(thresholds, "rpm_ratio_viruses")
+    rpm_ratio_thres_fun <- extractThreshold(thresholds, "rpm_ratio_fungi")
+    rpm_ratio_thres_euk <- extractThreshold(thresholds, "rpm_ratio_othereukaryotes")
+    proportion_thres_bac <- extractThreshold(thresholds, "proportion_bacteria")
+    proportion_thres_vir <- extractThreshold(thresholds, "proportion_viruses")
+    proportion_thres_fun <- extractThreshold(thresholds, "proportion_fungi")
+    proportion_thres_euk <- extractThreshold(thresholds, "proportion_othereukaryotes")
+    low_level_bac <- extractThreshold(thresholds, "low_level_bacteria")
+    low_level_vir <- extractThreshold(thresholds, "low_level_viruses")
+    low_level_fun <- extractThreshold(thresholds, "low_level_fungi")
+    low_level_euk <- extractThreshold(thresholds, "low_level_othereukaryotes")
 
   }
 
@@ -41,38 +72,67 @@ applyThresholds <- function(type, rpm_ratio, reads, control_reads, proportion,
 
   if (!is.na(type) & !is.na(rpm_ratio) & !is.na(reads) & !is.na(proportion)) {
 
-    if (type == "Bacteria"){
+    if (type == "Bacteria") {
 
-      if (rpm_ratio >= rpm_ratio_thres_bac & proportion >= proportion_thres_bac) {
+      if (reads >= reads_thres_bac &
+          rpm_ratio >= rpm_ratio_thres_bac &
+          proportion >= proportion_thres_bac
+      ) {
 
         output <- "positive"
 
+      } else if (low_level_bac == TRUE &
+                 reads >= reads_thres_bac &
+                 (control_reads == 0 | rpm_ratio >= rpm_ratio_thres_bac) &
+                  proportion >= proportion_thres_bac
+                 ) {
+
+                   output <- "positive"
       } else {
 
-        output <- "negative"
+      output <- "negative"
 
-      }
+    }
 
     } else if (type == "Virus") {
 
-      if (rpm_ratio >= rpm_ratio_thres_vir & proportion >= proportion_thres_vir &
-          reads >= reads_thres_vir &
-          (control_reads <= control_reads_thres_vir | rpm_ratio >= rpm_ratio_thres_vir )) {
+      if (reads >= reads_thres_vir &
+          rpm_ratio >= rpm_ratio_thres_vir &
+          proportion >= proportion_thres_vir
+      ) {
 
         output <- "positive"
 
-      } else {
+       } else if (low_level_vir == TRUE &
+                  reads >= reads_thres_vir &
+                  (control_reads == 0 | rpm_ratio >= rpm_ratio_thres_vir) &
+                  proportion >= proportion_thres_vir
+         ) {
+
+          output <- "positive"
+
+        } else {
 
         output <- "negative"
 
-      }
+        }
 
-    } else if (type == "Fungi") {
+      } else if (type == "Fungi") {
 
-      if (rpm_ratio >= rpm_ratio_thres_fun & reads >= reads_thres_fun &
-          proportion >= proportion_thres_fun) {
+        if (reads >= reads_thres_fun &
+            rpm_ratio >= rpm_ratio_thres_fun &
+            proportion >= proportion_thres_fun
+        ) {
 
-        output <- "positive"
+          output <- "positive"
+
+        } else if (low_level_fun == TRUE &
+                   reads >= reads_thres_fun &
+                   (control_reads == 0 | rpm_ratio >= rpm_ratio_thres_fun) &
+                    proportion >= proportion_thres_fun
+                   ) {
+
+                     output <- "positive"
 
       } else {
 
@@ -82,15 +142,30 @@ applyThresholds <- function(type, rpm_ratio, reads, control_reads, proportion,
 
     } else if (type == "Other eukaryote") {
 
-      if (rpm_ratio >= rpm_ratio_thres_euk & proportion >= proportion_thres_euk) {
+      if (reads >= reads_thres_euk &
+          rpm_ratio >= rpm_ratio_thres_euk &
+          proportion >= proportion_thres_euk
+      ) {
 
         output <- "positive"
+
+      } else if (low_level_euk == TRUE &
+                 reads >= reads_thres_euk &
+                 (control_reads == 0 | rpm_ratio >= rpm_ratio_thres_euk) &
+                  proportion >= proportion_thres_euk
+                 ) {
+
+                   output <- "positive"
 
       } else {
 
         output <- "negative"
 
       }
+
+    } else {
+
+      output <- NA
 
     }
 

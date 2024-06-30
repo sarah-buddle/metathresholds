@@ -60,10 +60,10 @@ makeTaxDBReports <- function(reports, taxonomizr_sql, db_filepath = NULL) {
     do.call(rbind, .) %>%
     as.data.frame(.) %>%
     dplyr::filter(!is.na(taxid)) %>%
-    dplyr::distinct()=
+    dplyr::distinct()
 
   # Find details for species identified from strains
-  extra_taxids <- na.omit(setdiff(taxonomy$species_taxid, taxonomy$taxid))
+  extra_taxids <- na.omit(setdiff(taxonomy1$species_taxid, taxonomy1$taxid))
 
   taxonomy2 <- lapply(extra_taxids, FUN = metathresholds::makeTaxDB, taxonomizr_sql = taxonomizr_sql) %>%
     do.call(rbind, .) %>%
