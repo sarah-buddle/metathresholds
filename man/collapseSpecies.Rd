@@ -2,7 +2,7 @@
 % Please edit documentation in R/collapseSpecies.R
 \name{collapseSpecies}
 \alias{collapseSpecies}
-\title{Wrapper function to calculate reads per million ratio and proportion of micorbial reads from raw classifier output}
+\title{Transfers all reads assigned to subspecies to their corresponding species}
 \usage{
 collapseSpecies(report_full, db)
 }
@@ -15,5 +15,5 @@ collapseSpecies(report_full, db)
 Report collapsed by species
 }
 \description{
-Wrapper function to calculate reads per million ratio and proportion of micorbial reads from raw classifier output
+Transfers all reads assigned to subspecies to their corresponding species
 }

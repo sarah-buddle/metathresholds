@@ -1,12 +1,11 @@
-#' Count true and false positive species present in samples
+#' Count true and false positive species present in samples and calculate sensitivity and precision
 #'
 #'
 #'
-#' @param taxid Taxon ID
-#' @param result
-#' @param positive_taxids list of true positive taxids
-#' @param by_type Should the results be grouped into viruses, bacteria, fungi and other eukaryotes
-#' @return A named list which will become the taxonomy database entry associated with the input taxon ID.
+#' @param combined_dnarna_report output of combineDNARNA
+#' @param positive_species_filepath Path to csv file with list of expected positive taxon IDs
+#' @param by_type if true, calculates stas per type (e.g. bacteria, virus) within each sample. Default false.
+#' @return A report with a row for each sample with stats calculated
 #' @export
 #'
 

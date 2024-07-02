@@ -2,18 +2,22 @@
 % Please edit documentation in R/isCorrect.R
 \name{isCorrect}
 \alias{isCorrect}
-\title{Create species-level database}
+\title{Determines whether result predicted by thresholds is correct given list of true positive taxids. Only works at species level}
 \usage{
 isCorrect(taxid, rank, result, positive_species_taxids)
 }
 \arguments{
 \item{taxid}{Taxon ID}
 
-\item{positive_taxids}{list of true positive taxids}
+\item{rank}{taxonomic rank e.g. species}
+
+\item{result}{predicted result from thresholds}
+
+\item{positive_species_taxids}{list of true positive taxids}
 }
 \value{
 A named list which will become the taxonomy database entry associated with the input taxon ID.
 }
 \description{
-Create species-level database
+Determines whether result predicted by thresholds is correct given list of true positive taxids. Only works at species level
 }

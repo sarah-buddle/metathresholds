@@ -9,10 +9,10 @@ makeTaxDB(taxid, taxonomizr_sql)
 \arguments{
 \item{taxid}{Taxon ID}
 
-\item{taxonomizr_sql}{Path to nameNode.sqlite file for taxonomizr.}
+\item{taxonomizr_sql}{Path to nameNode.sqlite file for taxonomizr}
 }
 \value{
-A named list which will become the taxonomy database entry associated with the input taxon ID.
+A named list which will become the taxonomy database entry associated with the input taxon ID
 }
 \description{
 Create species-level database

@@ -2,16 +2,16 @@
 % Please edit documentation in R/combineDNARNA.R
 \name{combineDNARNA}
 \alias{combineDNARNA}
-\title{Combine DNA and RNA results, retaining only whichever method gives a higher rpm}
+\title{Combine DNA and RNA results, retaining only whichever method gives a higher rpmr}
 \usage{
 combineDNARNA(report)
 }
 \arguments{
-\item{report}{Taxon ID}
+\item{report}{Output of makeFullReport}
 }
 \value{
 Combine DNA and RNA report
 }
 \description{
-Combine DNA and RNA results, retaining only whichever method gives a higher rpm
+Combine DNA and RNA results, retaining only whichever method gives a higher rpmr
 }

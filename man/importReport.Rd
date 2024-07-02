@@ -2,14 +2,14 @@
 % Please edit documentation in R/importReport.R
 \name{importReport}
 \alias{importReport}
-\title{Create species-level database}
+\title{import outputs of taxonomic classifiers}
 \usage{
 importReport(sample_id, tool, input_filepath)
 }
 \arguments{
 \item{sample_id}{name of your sample}
 
-\item{tool}{program used to generate report - can be kraken2}
+\item{tool}{program used to generate report}
 
 \item{input_filepath}{filepath to report corresponding to sample_id and tool}
 }
@@ -17,5 +17,5 @@ importReport(sample_id, tool, input_filepath)
 A report containing just the taxids and read counts
 }
 \description{
-Create species-level database
+import outputs of taxonomic classifiers
 }

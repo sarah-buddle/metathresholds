@@ -27,7 +27,9 @@ makeFullReport(
   low_level_vir = FALSE,
   low_level_fun = FALSE,
   low_level_euk = FALSE,
-  collapse_species = TRUE
+  collapse_species = TRUE,
+  keep_species_only = FALSE,
+  virus_only = FALSE
 )
 }
 \arguments{
@@ -39,7 +41,47 @@ makeFullReport(
 
 \item{thresholds_filepath}{Path to file containing thresholds. See https://github.com/sarah-buddle/metathresholds for a template.}
 
-\item{collapse_species}{if true, any reads assigned to sub-species, strains etc will be assigned to the relevant species for analysis}
+\item{proportion}{Type of proportion used for calculation of proportion thresholds. Options: "proportion_nonhuman_classified" (default) or "proportion_raw"}
+
+\item{positive_species_filepath}{Path to csv file with list of expected positive taxon IDs}
+
+\item{reads_thres_bac}{see readme}
+
+\item{reads_thres_vir}{see readme}
+
+\item{reads_thres_fun}{see readme}
+
+\item{reads_thres_euk}{see readme}
+
+\item{rpm_ratio_thres_bac}{see readme}
+
+\item{rpm_ratio_thres_vir}{see readme}
+
+\item{rpm_ratio_thres_fun}{see readme}
+
+\item{rpm_ratio_thres_euk}{see readme}
+
+\item{proportion_thres_vir}{see readme}
+
+\item{proportion_thres_fun}{see readme}
+
+\item{proportion_thres_euk}{see readme}
+
+\item{low_level_bac}{see readme}
+
+\item{low_level_vir}{see readme}
+
+\item{low_level_fun}{see readme}
+
+\item{low_level_euk}{see readme}
+
+\item{collapse_species}{if true, any reads assigned to sub-species, strains etc will be assigned to the relevant species for analysis. Defaut true}
+
+\item{keep_species_only}{if true, ooly keep taxa with the rank species in the results, Default false}
+
+\item{virus_only}{if true, only keep viruses in the final output. Default false}
+
+\item{proportion_thres_bas}{see readme}
 }
 \value{
 Report with taxons classified as positive and negative according to thresholds.

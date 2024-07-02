@@ -1,10 +1,11 @@
-#' Create species-level database
+#' Determines whether result predicted by thresholds is correct given list of true positive taxids. Only works at species level
 #'
 #'
 #'
 #' @param taxid Taxon ID
-#' @param result
-#' @param positive_taxids list of true positive taxids
+#' @param rank taxonomic rank e.g. species
+#' @param result predicted result from thresholds
+#' @param positive_species_taxids list of true positive taxids
 #' @return A named list which will become the taxonomy database entry associated with the input taxon ID.
 #' @export
 

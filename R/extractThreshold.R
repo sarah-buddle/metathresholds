@@ -1,8 +1,9 @@
-#' Link sample data to corresponding controls
+#' Extract thresholds from thresholds csv
 #'
 #'
 #'
-#' @param report_full reports linked with relevant control IDs
+#' @param thresholds imported thresholds.csv
+#' @param threshold_name descriptive name of threshold
 #' @return A report with control read counts linke dto their relevant sample
 #' @export
 

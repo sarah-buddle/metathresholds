@@ -2,7 +2,25 @@
 #'
 #'
 #'
-#' @param report_full reports linked with relevant control IDs
+#' @param report reports linked with relevant control IDs
+#' @param thresholds_filepath Path to file containing thresholds. See https://github.com/sarah-buddle/metathresholds for a template.
+#' @param proportion Type of proportion used for calculation of proportion thresholds. Options: "proportion_nonhuman_classified" (default) or "proportion_raw"
+#' @param reads_thres_bac see readme
+#' @param reads_thres_vir see readme
+#' @param reads_thres_fun see readme
+#' @param reads_thres_euk see readme
+#' @param rpm_ratio_thres_bac see readme
+#' @param rpm_ratio_thres_vir see readme
+#' @param rpm_ratio_thres_fun see readme
+#' @param rpm_ratio_thres_euk see readme
+#' @param proportion_thres_bas see readme
+#' @param proportion_thres_vir see readme
+#' @param proportion_thres_fun see readme
+#' @param proportion_thres_euk see readme
+#' @param low_level_bac see readme
+#' @param low_level_vir see readme
+#' @param low_level_fun see readme
+#' @param low_level_euk see readme
 #' @return A report with control read counts linked to their relevant sample
 #' @export
 
@@ -32,12 +50,6 @@ applyThresholdsReport <- function(report,
     thresholds <- read.csv(thresholds_filepath, header = TRUE)
 
   }
-
-  print(proportion)
-
-  # report_results <- report %>%
-  #   dplyr::mutate(result = applyThresholds(type, rpm_ratio, reads, control_reads, !!(rlang::ensym(proportion)),
-  #                                          thresholds))
 
   report_results <- report %>%
     dplyr::mutate(result = applyThresholds(type, rpm_ratio, reads, control_reads, !!(rlang::ensym(proportion)),

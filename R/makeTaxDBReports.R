@@ -1,4 +1,4 @@
-#' Create species-level database
+#' Create taxon database
 #'
 #'
 #'

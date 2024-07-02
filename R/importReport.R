@@ -1,9 +1,9 @@
-#' Create species-level database
+#' import outputs of taxonomic classifiers
 #'
 #'
 #'
 #' @param sample_id name of your sample
-#' @param tool program used to generate report - can be kraken2
+#' @param tool program used to generate report
 #' @param input_filepath filepath to report corresponding to sample_id and tool
 #' @return A report containing just the taxids and read counts
 #' @export

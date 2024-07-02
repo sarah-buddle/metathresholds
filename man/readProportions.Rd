@@ -2,7 +2,7 @@
 % Please edit documentation in R/readProportions.R
 \name{readProportions}
 \alias{readProportions}
-\title{Calculate proprtions of total, nonhuman classified and reads of that type}
+\title{Calculate proportions of total, nonhuman classified and reads of that type}
 \usage{
 readProportions(report_controls, contaminant_taxids = NULL)
 }
@@ -15,5 +15,5 @@ readProportions(report_controls, contaminant_taxids = NULL)
 A named list containing fileds associated with the input taxon ID
 }
 \description{
-Calculate proprtions of total, nonhuman classified and reads of that type
+Calculate proportions of total, nonhuman classified and reads of that type
 }

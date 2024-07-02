@@ -2,8 +2,8 @@
 #'
 #'
 #'
-#' @param report_full reports linked with relevant control IDs
-#' @return A report with control read counts linke dto their relevant sample
+#' @param report_full reports linked with relevant control IDs - see makeFullReport
+#' @return A report with control read counts linked to their relevant sample
 #' @export
 
 

@@ -7,10 +7,10 @@
 linkControls(report_full)
 }
 \arguments{
-\item{report_full}{reports linked with relevant control IDs}
+\item{report_full}{reports linked with relevant control IDs - see makeFullReport}
 }
 \value{
-A report with control read counts linke dto their relevant sample
+A report with control read counts linked to their relevant sample
 }
 \description{
 Link sample data to corresponding controls

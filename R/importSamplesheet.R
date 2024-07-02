@@ -3,7 +3,7 @@
 #'
 #'
 #' @param samplesheet_filepath filepath to samplesheet
-#' @return A named list containing fieds associated with the input taxon ID
+#' @return A named list containing fields associated with the input taxon ID
 #' @export
 
 

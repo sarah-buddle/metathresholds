@@ -2,28 +2,28 @@
 #'
 #'
 #'
-#' @param type
-#' @param rpm_ratio
-#' @param reads
-#' @param control_reads
-#' @param proportion
-#' @param thresholds
-#' @param reads_thres_bac
-#' @param reads_thres_vir
-#' @param reads_thres_fun
-#' @param reads_thres_euk
-#' @param rpm_ratio_thres_bac
-#' @param rpm_ratio_thres_vir
-#' @param rpm_ratio_thres_fun
-#' @param rpm_ratio_thres_euk
-#' @param proportion_thres_bas
-#' @param proportion_thres_vir
-#' @param proportion_thres_fun
-#' @param proportion_thres_euk
-#' @param low_level_bac
-#' @param low_level_vir
-#' @param low_level_fun
-#' @param low_level_euk
+#' @param type options: bacteria, virus, fungi, other_eukaryote
+#' @param rpm_ratio reads per million ratio
+#' @param reads number ofreads
+#' @param control_reads number of reads in negative control
+#' @param proportion proportion
+#' @param thresholds thresholds imported from thresholds_filepath
+#' @param reads_thres_bac see readme
+#' @param reads_thres_vir see readme
+#' @param reads_thres_fun see readme
+#' @param reads_thres_euk see readme
+#' @param rpm_ratio_thres_bac see readme
+#' @param rpm_ratio_thres_vir see readme
+#' @param rpm_ratio_thres_fun see readme
+#' @param rpm_ratio_thres_euk see readme
+#' @param proportion_thres_bas see readme
+#' @param proportion_thres_vir see readme
+#' @param proportion_thres_fun see readme
+#' @param proportion_thres_euk see readme
+#' @param low_level_bac see readme
+#' @param low_level_vir see readme
+#' @param low_level_fun see readme
+#' @param low_level_euk see readme
 #' @return Positive or negative
 #' @export
 

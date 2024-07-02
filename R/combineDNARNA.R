@@ -2,7 +2,7 @@
 #'
 #'
 #'
-#' @param report Taxon ID
+#' @param report Output of makeFullReport
 #' @return Combine DNA and RNA report
 #' @export
 

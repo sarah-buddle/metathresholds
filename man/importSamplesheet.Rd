@@ -10,7 +10,7 @@ importSamplesheet(samplesheet_filepath)
 \item{samplesheet_filepath}{filepath to samplesheet}
 }
 \value{
-A named list containing fieds associated with the input taxon ID
+A named list containing fields associated with the input taxon ID
 }
 \description{
 Import samplesheet

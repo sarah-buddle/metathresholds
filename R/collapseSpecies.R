@@ -1,4 +1,4 @@
-#' Wrapper function to calculate reads per million ratio and proportion of micorbial reads from raw classifier output
+#' Transfers all reads assigned to subspecies to their corresponding species
 #'
 #'
 #'

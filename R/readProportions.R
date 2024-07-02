@@ -1,4 +1,4 @@
-#' Calculate proprtions of total, nonhuman classified and reads of that type
+#' Calculate proportions of total, nonhuman classified and reads of that type
 #'
 #'
 #'
@@ -19,13 +19,6 @@ readProportions <- function(report_controls, contaminant_taxids = NULL) {
                     "Hominoidea", "Hominidae", "Homininae", "Homo", "Homo sapiens")
 
   unclassified_taxons <- c("unclassified", "root", "unidentified", "uncultured organism")
-
-  # if (is.null(contaminant_taxins)) {
-  #
-  #   contaminant_taxons <- c()
-  #
-  # }
-
 
 totals_nonhuman_classified <- report_controls %>%
   dplyr::filter(!(name_speciesorhigher %in% unclassified_taxons)

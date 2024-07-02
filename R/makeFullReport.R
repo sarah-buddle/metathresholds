@@ -6,25 +6,27 @@
 #' @param taxonomizr_sql Path to nameNode.sqlite file for taxonomizr. If this doesn't exist, a new one will be created in this location. Generating this file may take some time.
 #' @param db_filepath Path to taxonomy database used by metaThresholds. If this doesn't exist, a new one will be created in this location. If no filepath is provided, a new database will be generated for each analysis.
 #' @param thresholds_filepath Path to file containing thresholds. See https://github.com/sarah-buddle/metathresholds for a template.
-#' @param reads_thres_bac
-#' @param reads_thres_vir
-#' @param reads_thres_fun
-#' @param reads_thres_euk
-#' @param rpm_ratio_thres_bac
-#' @param rpm_ratio_thres_vir
-#' @param rpm_ratio_thres_fun
-#' @param rpm_ratio_thres_euk
-#' @param proportion_thres_bas
-#' @param proportion_thres_vir
-#' @param proportion_thres_fun
-#' @param proportion_thres_euk
-#' @param low_level_bac
-#' @param low_level_vir
-#' @param low_level_fun
-#' @param low_level_euk
-#' @param collapse_species if true, any reads assigned to sub-species, strains etc will be assigned to the relevant species for analysis
-#' @param keep_species_only
-#' @param virus_only
+#' @param proportion Type of proportion used for calculation of proportion thresholds. Options: "proportion_nonhuman_classified" (default) or "proportion_raw"
+#' @param positive_species_filepath Path to csv file with list of expected positive taxon IDs
+#' @param reads_thres_bac see readme
+#' @param reads_thres_vir see readme
+#' @param reads_thres_fun see readme
+#' @param reads_thres_euk see readme
+#' @param rpm_ratio_thres_bac see readme
+#' @param rpm_ratio_thres_vir see readme
+#' @param rpm_ratio_thres_fun see readme
+#' @param rpm_ratio_thres_euk see readme
+#' @param proportion_thres_bas see readme
+#' @param proportion_thres_vir see readme
+#' @param proportion_thres_fun see readme
+#' @param proportion_thres_euk see readme
+#' @param low_level_bac see readme
+#' @param low_level_vir see readme
+#' @param low_level_fun see readme
+#' @param low_level_euk see readme
+#' @param collapse_species if true, any reads assigned to sub-species, strains etc will be assigned to the relevant species for analysis. Defaut true
+#' @param keep_species_only if true, ooly keep taxa with the rank species in the results, Default false
+#' @param virus_only if true, only keep viruses in the final output. Default false
 #' @return Report with taxons classified as positive and negative according to thresholds.
 #' @export
 
@@ -51,7 +53,7 @@ makeFullReport <- function(samplesheet_filepath = "./samplesheet.csv",
                            low_level_fun = FALSE,
                            low_level_euk = FALSE,
                            collapse_species = TRUE,
-                           keep_species_only = TRUE,
+                           keep_species_only = FALSE,
                            virus_only = FALSE) {
 
   # Import samplesheet

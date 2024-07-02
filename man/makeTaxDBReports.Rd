@@ -2,7 +2,7 @@
 % Please edit documentation in R/makeTaxDBReports.R
 \name{makeTaxDBReports}
 \alias{makeTaxDBReports}
-\title{Create species-level database}
+\title{Create taxon database}
 \usage{
 makeTaxDBReports(reports, taxonomizr_sql, db_filepath = NULL)
 }
@@ -17,5 +17,5 @@ makeTaxDBReports(reports, taxonomizr_sql, db_filepath = NULL)
 A named list containing fileds associated with the input taxon ID
 }
 \description{
-Create species-level database
+Create taxon database
 }

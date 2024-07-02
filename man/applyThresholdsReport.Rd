@@ -27,7 +27,43 @@ applyThresholdsReport(
 )
 }
 \arguments{
-\item{report_full}{reports linked with relevant control IDs}
+\item{report}{reports linked with relevant control IDs}
+
+\item{thresholds_filepath}{Path to file containing thresholds. See https://github.com/sarah-buddle/metathresholds for a template.}
+
+\item{proportion}{Type of proportion used for calculation of proportion thresholds. Options: "proportion_nonhuman_classified" (default) or "proportion_raw"}
+
+\item{reads_thres_bac}{see readme}
+
+\item{reads_thres_vir}{see readme}
+
+\item{reads_thres_fun}{see readme}
+
+\item{reads_thres_euk}{see readme}
+
+\item{rpm_ratio_thres_bac}{see readme}
+
+\item{rpm_ratio_thres_vir}{see readme}
+
+\item{rpm_ratio_thres_fun}{see readme}
+
+\item{rpm_ratio_thres_euk}{see readme}
+
+\item{proportion_thres_vir}{see readme}
+
+\item{proportion_thres_fun}{see readme}
+
+\item{proportion_thres_euk}{see readme}
+
+\item{low_level_bac}{see readme}
+
+\item{low_level_vir}{see readme}
+
+\item{low_level_fun}{see readme}
+
+\item{low_level_euk}{see readme}
+
+\item{proportion_thres_bas}{see readme}
 }
 \value{
 A report with control read counts linked to their relevant sample

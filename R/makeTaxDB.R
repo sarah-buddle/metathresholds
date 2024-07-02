@@ -3,8 +3,8 @@
 #'
 #'
 #' @param taxid Taxon ID
-#' @param taxonomizr_sql Path to nameNode.sqlite file for taxonomizr.
-#' @return A named list which will become the taxonomy database entry associated with the input taxon ID.
+#' @param taxonomizr_sql Path to nameNode.sqlite file for taxonomizr
+#' @return A named list which will become the taxonomy database entry associated with the input taxon ID
 #' @export
 
 makeTaxDB <- function(taxid, taxonomizr_sql) {

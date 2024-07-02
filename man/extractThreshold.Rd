@@ -2,16 +2,18 @@
 % Please edit documentation in R/extractThreshold.R
 \name{extractThreshold}
 \alias{extractThreshold}
-\title{Link sample data to corresponding controls}
+\title{Extract thresholds from thresholds csv}
 \usage{
 extractThreshold(thresholds, threshold_name)
 }
 \arguments{
-\item{report_full}{reports linked with relevant control IDs}
+\item{thresholds}{imported thresholds.csv}
+
+\item{threshold_name}{descriptive name of threshold}
 }
 \value{
 A report with control read counts linke dto their relevant sample
 }
 \description{
-Link sample data to corresponding controls
+Extract thresholds from thresholds csv
 }
