@@ -17,7 +17,7 @@ importSamplesheet <- function(samplesheet_filepath) {
 
   if (!setequal(colnames(samplesheet), samplesheet_colnames)) {
 
-    stop("Error: incorrect filenames in samplesheet")
+    stop("Error: incorrect column names in samplesheet")
 
   }
 
