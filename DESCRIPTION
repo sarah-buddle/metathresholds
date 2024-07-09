@@ -2,9 +2,8 @@ Package: metathresholds
 Type: Package
 Title: Applies thresholds to classified metagenomics data
 Version: 0.1.0
-Author: person("Sarah", "Buddle", "sarah.buddle.21@ucl.ac.uk", role = c("aut", "cre"),
+Authors@R: person("Sarah", "Buddle", "sarah.buddle.21@ucl.ac.uk", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-4738-9469"))
-Maintainer: The package maintainer sarah.buddle.21@ucl.ac.uk
 Description: Takes output of common taxonomic classifiers such as Kraken2 and
     applies thresholds based on raw reads, reads per million ratio and proportion
     of microbial reads.
