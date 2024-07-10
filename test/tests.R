@@ -6,7 +6,7 @@ library(metathresholds)
 options(scipen = 999)
 
 # Filepaths
-samplesheet_filepath <- "W:/home/sbuddle/mnt/BTRU-scratch/sarah/results/virus_methods/samplesheet_metathresholds.csv"
+samplesheet_filepath <- "W:/home/sbuddle/mnt/BTRU-scratch/sarah/results/virus_methods/samplesheet_metathresholds_test.csv"
 taxonomizr_sql <- "C:/Users/Sarah Buddle/Documents/taxonomizr/nameNode.sqlite"
 db_filepath <- "W:/home/sbuddle/mnt/BTRU-scratch/sarah/results/taxonomy/taxonomy_metathresholds.csv"
 thresholds_filepath <- "W:/home/sbuddle/mnt/BTRU-scratch/sarah/results/virus_methods/thresholds_metathresholds.csv"
@@ -20,6 +20,9 @@ exclude_taxids <- c("329852", "2681611") # taxids for internal controls
 # Our thresholds applied
 full_report_thres <- makeFullReport(samplesheet_filepath, taxonomizr_sql, db_filepath, thresholds_filepath, collapse_species = TRUE,
                                     keep_species_only = FALSE, positive_species_filepath = positive_species_filepath, virus_only = TRUE)
+
+full_report_thres <- makeFullReport(samplesheet_filepath, taxonomizr_sql, db_filepath, thresholds_filepath, collapse_species = TRUE,
+                                    keep_species_only = FALSE)
 
 write.csv(full_report_thres, full_report_output_filepath, row.names = FALSE, quote = FALSE)
 

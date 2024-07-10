@@ -127,7 +127,11 @@ makeFullReport <- function(samplesheet_filepath = "./samplesheet.csv",
     report_results <- report_thresholds %>%
       dplyr::mutate(result_category = isCorrect(taxid, rank, result, positive_species_df$V1))
 
+    report_thresholds <- report_results
+
   }
+
+  return(report_thresholds)
 
 
 }
