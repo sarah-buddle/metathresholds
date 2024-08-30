@@ -63,7 +63,10 @@ makeFullReport <- function(samplesheet_filepath = "./samplesheet.csv",
   reports <- importAllReports(samplesheet)
 
   # Make database
-  db <- makeTaxDBReports(reports, taxonomizr_sql, db_filepath)
+  db <- makeTaxDBReports(reports, taxonomizr_sql, db_filepath) %>%
+    dplyr::mutate(taxid = as.character(taxid))
+
+  #db <- read.csv(db_filepath)
 
   # Combine
   report_full <- reports %>%
