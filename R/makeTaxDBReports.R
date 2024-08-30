@@ -65,13 +65,21 @@ makeTaxDBReports <- function(reports, taxonomizr_sql, db_filepath = NULL) {
   # Find details for species identified from strains
   extra_taxids <- na.omit(setdiff(taxonomy1$species_taxid, taxonomy1$taxid))
 
-  taxonomy2 <- lapply(extra_taxids, FUN = metathresholds::makeTaxDB, taxonomizr_sql = taxonomizr_sql) %>%
-    do.call(rbind, .) %>%
-    as.data.frame(.) %>%
-    dplyr::filter(!is.na(taxid)) %>%
-    dplyr::distinct()
+  if (as.numeric(length(extra_taxids)) == 0) {
 
-  taxonomy <- rbind(taxonomy1, taxonomy2)
+    taxonomy <- taxonomy1
+
+  } else {
+
+    taxonomy2 <- lapply(extra_taxids, FUN = metathresholds::makeTaxDB, taxonomizr_sql = taxonomizr_sql) %>%
+      do.call(rbind, .) %>%
+      as.data.frame(.) %>%
+      dplyr::filter(!is.na(taxid)) %>%
+      dplyr::distinct()
+
+    taxonomy <- rbind(taxonomy1, taxonomy2)
+
+  }
 
   # If db filepath supplied, save new taxids to file and return the full db
   if (!is.null(db_filepath)) {
