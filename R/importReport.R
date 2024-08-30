@@ -15,7 +15,7 @@ importReport <- function(sample_id, tool, input_filepath) {
   if (!is.na(input_filepath)) {
 
     # Import report from taxonomic classifier. Just keep the taxon ID and the number of reads assigned
-    if (tool %in% c("kraken2", "dragen", "epi2me_kraken", "epi2me_bracken", "megan_lr")) {
+    if (tool %in% c("kraken2", "dragen", "epi2me_kraken", "megan_lr")) {
 
       report <- read.delim(input_filepath, sep = "\t", header = FALSE, row.names = NULL, strip.white = TRUE) %>%
         dplyr::mutate_if(is.character, trimws) %>%
@@ -25,7 +25,7 @@ importReport <- function(sample_id, tool, input_filepath) {
         dplyr::mutate(sample_id = sample_id,
                       tool = tool)
 
-    } else if (tool %in% c("bracken")) {
+    } else if (tool %in% c("bracken", "epi2me_bracken")) {
 
       report <- read.delim(input_filepath, sep = "\t", header = TRUE, row.names = NULL, strip.white = TRUE) %>%
         dplyr::mutate_if(is.character, trimws) %>%
