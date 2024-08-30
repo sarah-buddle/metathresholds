@@ -51,8 +51,10 @@ applyThresholdsReport <- function(report,
 
   }
 
+  #####!!(rlang::ensym(proportion))
+
   report_results <- report %>%
-    dplyr::mutate(result = applyThresholds(type, rpm_ratio, reads, control_reads, !!(rlang::ensym(proportion)),
+    dplyr::mutate(result = applyThresholds(type, rpm_ratio, reads, control_reads, !!as.name(proportion),
                                thresholds,
                                reads_thres_bac,
                                reads_thres_vir,
