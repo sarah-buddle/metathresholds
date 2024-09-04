@@ -5,6 +5,7 @@ This package is designed to apply filters to the raw outputs of metagenomics cla
 ## Installation instructions
 
 ## Input requirements
+If you're running the package for the first time, you need a filled in samplesheet and thresholds file. You should also provide a filepath to wherever you want to create the taxonomizr and metathresholds db file (so the folder should exist, but not the file).
 
 **Samplesheet (required):** Path to csv samplesheet file formatted according to the provided template. Leave the column names exactly as they are in the template, and just leave cells blank where you don't have outputs for that classifier.
 
